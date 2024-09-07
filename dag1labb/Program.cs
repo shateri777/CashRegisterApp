@@ -136,7 +136,11 @@ namespace dag1labb
             {
                 Console.WriteLine(message);
             }
-            hejsan hoppsan detta är en liten testi test test hehe 
+            hejsan hoppsan detta är ett liten testi test test hehe 
+                
+
+
+                ett tille test yiippiiee woww!
         }
     }
 }
