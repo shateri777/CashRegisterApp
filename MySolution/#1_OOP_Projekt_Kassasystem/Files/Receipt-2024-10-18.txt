@@ -10,3 +10,34 @@ Total pris: 199,79999
 Antal: 20
 Products:
 - Banan, Price: 9,99
+Kvitto ID: 3
+Datum: 2024-10-18
+Total pris: 0
+Antal: 20
+Products:
+- Banan, Price: 9,99
+Kvitto ID: 4
+Datum: 2024-10-18
+Total pris: 0
+Antal: 20
+Products:
+- Banan, Price: 9,99
+Kvitto ID: 5
+Datum: 2024-10-18
+Total pris: 0
+Antal: 20
+Products:
+- Banan, Price: 9,99
+- Banan, Price: 9,99
+Kvitto ID: 6
+Datum: 2024-10-18
+Total pris: 0
+Antal: 20
+Products:
+- Banan, Price: 9,99
+Kvitto ID: 7
+Datum: 2024-10-18
+Total pris: 0
+Antal: 20
+Products:
+- Banan, Price: 9,99
