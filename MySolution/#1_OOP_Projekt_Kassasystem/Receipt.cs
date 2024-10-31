@@ -19,8 +19,16 @@ namespace _1_OOP_Projekt_Kassasystem
         public void readReceipt(DateOnly currentDate)
         {
             int maxId = 0;
-            string file = File.ReadAllText($"../../../Files/Receipt-{currentDate}.txt");
-            var matches = Regex.Matches(file, @"Kvitto ID: (\d+)");
+            string filePath = $"../../../Files/Receipt-{currentDate}.txt";
+            try
+            {
+                string file = File.ReadAllText(filePath);
+            }
+            catch
+            {
+                using FileStream fs = File.Create($"../../../Files/Receipt-{currentDate}.txt");
+            }
+            var matches = Regex.Matches(filePath, @"Kvitto ID: (\d+)");
             if (matches.Count > 0)
             {
                 foreach (Match match in matches)
@@ -38,7 +46,7 @@ namespace _1_OOP_Projekt_Kassasystem
                 Id = 1;
             }
         }
-        public void createReceipt(List<Product> products, float totalPrice, DateOnly currentDate, short amount)
+        public void createReceipt(List<Product> products, float totalPrice, DateOnly currentDate, byte amount)
         {
             TotalPrice = totalPrice;
             DateOnly = currentDate;
