@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _1_OOP_Projekt_Kassasystem
+﻿namespace _1_OOP_Projekt_Kassasystem.ProductManagement
 {
     class ProductManager
     {
@@ -34,18 +28,18 @@ namespace _1_OOP_Projekt_Kassasystem
                 Console.WriteLine($"{product.Name}, Price: {product.Price}");
             }
         }
-        public void DisplayChosenProducts(byte productid, List<Product> chosenProducts, float endPrice, byte amount)
+        public void DisplayChosenProducts(byte productId, List<Product> chosenProducts, float totalPrice, byte amount)
         {
             foreach (Product item in _listOfProducts.Products)
             {
-                if (productid == item.Id)
+                if (productId == item.Id)
                 {
                     chosenProducts.Add(item);
-                    endPrice += item.Price * amount;
+                    totalPrice = item.Price * amount;
                     Console.WriteLine($"Du valde: {item.Name}");
                     Console.WriteLine($"Enhet: {item.Unit}");
                     Console.WriteLine($"Antal: {amount}");
-                    Console.WriteLine($"Slutpriset är: {endPrice}kr");
+                    Console.WriteLine($"Slutpriset är: {totalPrice}kr");
                 }
             }
         }

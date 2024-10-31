@@ -9,7 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Files\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Receipts\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties files_4receipt-2024-10-11_1json__JsonSchema="https://api.app-prg1.zerops.io/api/rest/public/settings/zerops-yml-json-schema.json" /></VisualStudio></ProjectExtensions>

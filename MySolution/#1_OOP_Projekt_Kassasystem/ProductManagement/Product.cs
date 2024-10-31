@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _1_OOP_Projekt_Kassasystem
+namespace _1_OOP_Projekt_Kassasystem.ProductManagement
 {
     public class Product
     {
@@ -13,7 +13,7 @@ namespace _1_OOP_Projekt_Kassasystem
         public float Price { get; set; }
         public Units Unit { get; set; }
 
-        public Product(int  id, string name, float price, Units unit)
+        public Product(int id, string name, float price, Units unit)
         {
             Id = id;
             Name = name;
