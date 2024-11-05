@@ -1,4 +1,6 @@
-﻿namespace _1_OOP_Projekt_Kassasystem.ProductManagement
+﻿
+
+namespace _1_OOP_Projekt_Kassasystem.ProductManagement
 {
     class ProductManager
     {
@@ -25,23 +27,46 @@
         {
             foreach (Product product in _listOfProducts.Products)
             {
-                Console.WriteLine($"{product.Name}, Price: {product.Price}");
+                Console.WriteLine($"ID: {product.Id}, {product.Name}, Price: {product.Price}");
             }
         }
-        public void DisplayChosenProducts(byte productId, List<Product> chosenProducts, float totalPrice, byte amount)
+        public void DisplayChosenProducts(string productId, List<SelectedProduct> chosenProducts, ref float totalPrice, ushort amount)
         {
             foreach (Product item in _listOfProducts.Products)
             {
-                if (productId == item.Id)
+                if (productId == item.Id.ToString())
                 {
-                    chosenProducts.Add(item);
-                    totalPrice = item.Price * amount;
+                    SelectedProduct selectedProduct = null;
+                    foreach (var sp in chosenProducts)
+                    {
+                        if (sp.Product.Id == item.Id)
+                        {
+                            selectedProduct = sp;
+                            break;
+                        }
+                    }
+                    if (selectedProduct != null)
+                    {
+                        selectedProduct.Amount += amount;
+                    }
+                    else
+                    {
+                        chosenProducts.Add(new SelectedProduct(item, amount));
+                    }
+                    float itemTotalPrice = item.Price * amount;
+                    totalPrice += itemTotalPrice;
                     Console.WriteLine($"Du valde: {item.Name}");
                     Console.WriteLine($"Enhet: {item.Unit}");
                     Console.WriteLine($"Antal: {amount}");
-                    Console.WriteLine($"Slutpriset är: {totalPrice}kr");
+                    Console.WriteLine($"Slutpriset är: {totalPrice} kr");
                 }
             }
+            Console.WriteLine("\nDina totala produkter:");
+            foreach (var selectedProduct in chosenProducts)
+            {
+                Console.WriteLine($"{selectedProduct.Product.Name}, {selectedProduct.Product.Price} * {selectedProduct.Amount} = {selectedProduct.Product.Price * selectedProduct.Amount} kr");
+            }
+            Console.WriteLine($"Totalt belopp för alla produkter: {totalPrice} kr");
         }
     }
 }

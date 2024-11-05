@@ -5,7 +5,7 @@ namespace _1_OOP_Projekt_Kassasystem.Transactions
     public class Receipt
     {
         public int Id { get; set; }
-        public void readReceipt(DateOnly currentDate)
+        public void ReadReceipt(DateOnly currentDate)
         {
             int maxId = 0;
             string filePath = $"../../../Receipts/Receipt-{currentDate}.txt";
@@ -36,23 +36,24 @@ namespace _1_OOP_Projekt_Kassasystem.Transactions
                 Id = 1;
             }
         }
-        public void createReceipt(List<Product> products, float totalPrice, DateOnly currentDate, byte amount)
+        public void CreateReceipt(List<SelectedProduct> products, float totalPrice, DateOnly currentDate)
         {
-            foreach (Product product1 in products)
-            {
-                totalPrice = product1.Price * amount;
-            }
             List<string> receiptLines = new List<string>
             {
                 $"Kvitto ID: {Id}",
                 $"Datum: {currentDate}",
                 $"Total pris: {totalPrice}",
-                $"Antal: {amount}",
                 "Products:"
             };
-            foreach (Product product in products)
+            foreach (var selectedProduct in products)
             {
-                receiptLines.Add($"- {product.Name}, Price: {product.Price}");
+                float productTotalPrice = selectedProduct.Product.Price * selectedProduct.Amount;
+                totalPrice += productTotalPrice;
+                receiptLines.Add($"- {selectedProduct.Product.Name}, Price: {selectedProduct.Product.Price}, Amount: {selectedProduct.Amount}");
+            }
+            foreach (var lines in receiptLines)
+            {
+                Console.WriteLine(lines);
             }
             File.AppendAllLines($"../../../Receipts/Receipt-{currentDate}.txt", receiptLines);
         }
