@@ -1,0 +1,5 @@
+Kvitto ID: 1
+Datum: 2024-11-05
+Total pris: 9,99
+Products:
+- Banan, Price: 9,99, Amount: 1
