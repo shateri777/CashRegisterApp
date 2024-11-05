@@ -25,7 +25,7 @@ namespace _1_OOP_Projekt_Kassasystem.UI
                     switch (mainMenuChoice)
                     {
                         case 1:
-                            List<SelectedProduct> chosenProducts = new List<SelectedProduct>();
+                            List<SelectedProduct> selectedProducts = new List<SelectedProduct>();
                             while (true)
                             {
                                 Console.Clear();
@@ -39,7 +39,7 @@ namespace _1_OOP_Projekt_Kassasystem.UI
                                 string productId = userInputForProductChoice[0].ToUpper();
                                 if (productId == "PAY")
                                 {
-                                    if (chosenProducts.Count > 0)
+                                    if (selectedProducts.Count > 0)
                                     {
                                         Console.Clear();
                                         Console.WriteLine("Ditt kvitto skrivs ut...");
@@ -51,7 +51,7 @@ namespace _1_OOP_Projekt_Kassasystem.UI
                                         Console.BackgroundColor = ConsoleColor.White;
                                         Console.ForegroundColor = ConsoleColor.Black;
                                         receipt.ReadReceipt(currentDate);
-                                        receipt.CreateReceipt(chosenProducts, totalPrice, currentDate);
+                                        receipt.CreateReceipt(selectedProducts, totalPrice, currentDate);
                                         Console.ResetColor();
                                         Console.ForegroundColor = ConsoleColor.Yellow;
                                         Console.WriteLine("\nTryck på valfri knapp för att återgå till huvudmenyn...");
@@ -92,7 +92,7 @@ namespace _1_OOP_Projekt_Kassasystem.UI
                                     Console.WriteLine(@"T.ex: ""5 200""");
                                     Console.WriteLine("");
                                     Console.BackgroundColor = ConsoleColor.DarkMagenta;
-                                    productManager.DisplayChosenProducts(productId, chosenProducts, ref totalPrice, amount);
+                                    productManager.DisplayChosenProducts(productId, selectedProducts, ref totalPrice, amount);
                                     Console.ResetColor();
                                     Console.ForegroundColor = ConsoleColor.Yellow;
                                     Console.WriteLine("\nTryck på valfri knapp för att återgå till produkterna...");
@@ -132,13 +132,6 @@ namespace _1_OOP_Projekt_Kassasystem.UI
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Du skrev i fel format, försök igen.");
-                    Console.ResetColor();
-                }
-                catch (IndexOutOfRangeException)
-                {
-                    Console.Clear();
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine(@"Var vänlig att ange ett korrekt ""ProduktID"", försök igen.");
                     Console.ResetColor();
                 }
                 catch (OverflowException)

@@ -17,7 +17,7 @@ namespace _1_OOP_Projekt_Kassasystem.Transactions
                 {
                     foreach (Match match in matches)
                     {
-                        int receiptId = int.Parse(match.Groups[1].Value);
+                        int receiptId = Convert.ToInt32(match.Groups[1].Value);
                         if (receiptId > maxId)
                         {
                             maxId = receiptId;
@@ -36,7 +36,7 @@ namespace _1_OOP_Projekt_Kassasystem.Transactions
                 Id = 1;
             }
         }
-        public void CreateReceipt(List<SelectedProduct> products, float totalPrice, DateOnly currentDate)
+        public void CreateReceipt(List<SelectedProduct> selectedProducts, float totalPrice, DateOnly currentDate)
         {
             List<string> receiptLines = new List<string>
             {
@@ -45,7 +45,7 @@ namespace _1_OOP_Projekt_Kassasystem.Transactions
                 $"Total pris: {totalPrice}",
                 "Products:"
             };
-            foreach (var selectedProduct in products)
+            foreach (var selectedProduct in selectedProducts)
             {
                 float productTotalPrice = selectedProduct.Product.Price * selectedProduct.Amount;
                 totalPrice += productTotalPrice;
